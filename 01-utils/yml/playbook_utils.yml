@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: 01-utils
   sudo: yes
   tasks:
     - name: Make sure the /vagrant/yml/httpd existed
