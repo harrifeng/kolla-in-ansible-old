@@ -1,1 +1,1 @@
-yumdownloader --resolve --destdir=/vagrant/yml/httpd/localrpm ca-certificates docker-ce gcc libffi-devel openssl python-devel python-pip libselinux-python ntp
+yumdownloader --resolve --destdir=/vagrant/yml/httpd/localrpm ca-certificates docker-ce gcc libffi-devel openssl python-backports python-backports-ssl_match_hostname python-devel python-pip  python-setuptools libselinux-python ntp
