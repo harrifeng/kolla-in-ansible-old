@@ -20,8 +20,13 @@
       with_items:
         - python-pip
         - python-devel
+        - docker
         # - /vagrant/yml/httpd/python2-pip-8.1.2-5.el7.noarch.rpm
         # - /vagrant/yml/httpd/python-devel-2.7.5-48.el7.x86_64.rpm
+    - name: Debug
+      debug:
+        msg: "hello --------------------------------------<<"
+
     - name: Install Pip Packages
       pip:
         name: docker
