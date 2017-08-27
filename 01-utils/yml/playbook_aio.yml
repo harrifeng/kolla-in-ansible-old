@@ -51,6 +51,7 @@
         name: "{{ item }}"
         state: present
         conf_file: utils.repo
+        disable_gpg_check: yes
       with_items: "{{ rpm_packages }}"
     - name: Install Pip Packages
       pip:
