@@ -6,12 +6,6 @@
       file:
         path: /vagrant/yml/httpd
         state: directory
-    # - name: Install packages from local
-    #   yum:
-    #     name: "{{ item }}"
-    #     state: present
-    #   with_items:
-    #     - /vagrant/yml/httpd/docker-ce-17.06.0.ce-1.el7.centos.x86_64.rpm
     - name: Install package again
       yum:
         name: "{{ item }}"
@@ -21,12 +15,6 @@
         - python-pip
         - python-devel
         - docker
-        # - /vagrant/yml/httpd/python2-pip-8.1.2-5.el7.noarch.rpm
-        # - /vagrant/yml/httpd/python-devel-2.7.5-48.el7.x86_64.rpm
-    - name: Debug
-      debug:
-        msg: "hello --------------------------------------<<"
-
     - name: Install Pip Packages
       pip:
         name: docker

@@ -9,15 +9,15 @@
       - kolla-ansible
       - python-openstackclient
     rpm_packages:
-      - http://10.0.111.111:5001/python2-pip-8.1.2-5.el7.noarch.rpm
-      - http://10.0.111.111:5001/docker-ce-17.06.0.ce-1.el7.centos.x86_64.rpm
-      - http://10.0.111.111:5001/libffi-devel-3.0.13-18.el7.x86_64.rpm
-      - http://10.0.111.111:5001/gcc-4.8.5-11.el7.x86_64.rpm
-      - http://10.0.111.111:5001/openssl-devel-1.0.1e-60.el7.x86_64.rpm
-      - http://10.0.111.111:5001/libselinux-python-2.5-6.el7.x86_64.rpm
-      - http://10.0.111.111:5001/ca-certificates-2017.2.14-70.1.el7_3.noarch.rpm
-      - http://10.0.111.111:5001/ntp-4.2.6p5-25.el7.centos.x86_64.rpm
-      - http://10.0.111.111:5001/python-devel-2.7.5-48.el7.x86_64.rpm
+      - python-pip
+      - docker
+      - libffi-devel
+      - gcc
+      - openssl
+      - libselinux-python
+      - ca-certificates
+      - ntp
+      - python-devel
   tasks:
     - name: Make sure the root ssh folder exists
       file:
@@ -38,10 +38,11 @@
         src: dotssh/authorized_keys
         dest: /root/.ssh/authorized_keys
         mode: 0644
-    - name: Install list of packages from local
+    - name: Install list of packages from local utils repo
       yum:
         name: "{{ item }}"
         state: present
+        conf_file: utils.repo
       with_items: "{{ rpm_packages }}"
     - name: Install Pip Packages
       pip:
