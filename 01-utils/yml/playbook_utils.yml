@@ -6,6 +6,14 @@
       file:
         path: /vagrant/yml/httpd
         state: directory
+    - name: clean other repo
+      shell: |
+        rm -f /etc/yum.repos.d/*
+    - name: local repo
+      copy:
+        src: local.repo
+        dest: /etc/yum.repos.d/local.repo
+        force: yes
     - name: Install package again
       yum:
         name: "{{ item }}"
@@ -14,7 +22,7 @@
       with_items:
         - python-pip
         - python-devel
-        - docker
+        - docker-ce
     - name: Install Pip Packages
       pip:
         name: docker
