@@ -1,3 +1,4 @@
 *.gz
 *.img
 *.rpm
+localrpm

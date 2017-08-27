@@ -4,6 +4,7 @@ sudo yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo
 echo "get the local repo"
+sudo rm -rf /vagrant/yml/httpd/localrpm
 yumdownloader --resolve --destdir=/vagrant/yml/httpd/localrpm docker-ce \
               python-pip libffi-devel gcc openssl libselinux-python ca-certificates \
               ntp python-devel container-selinux libseccomp libtool-ltdl device-mapper-persistent-data lvm2
