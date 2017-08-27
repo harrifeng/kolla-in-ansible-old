@@ -20,9 +20,9 @@
         state: present
         conf_file: local.repo
       with_items:
-        - python-pip
-        - python-devel
         - docker-ce
+        - python-devel
+        - python-pip
     - name: Install Pip Packages
       pip:
         name: docker
