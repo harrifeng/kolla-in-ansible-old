@@ -50,7 +50,6 @@ build-iPhoneSimulator/
 .rvmrc
 
 .vagrant/
-httpd/
 *.retry
 *.vdi
 tmp/
