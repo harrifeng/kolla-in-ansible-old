@@ -1,19 +1,29 @@
 ---
-- hosts: all
+- hosts: 01-utils
   sudo: yes
   tasks:
     - name: Make sure the /vagrant/yml/httpd existed
       file:
         path: /vagrant/yml/httpd
         state: directory
-    - name: Install packages from local
+    - name: clean other repo
+      shell: |
+        mkdir -p /tmp/repos
+        mv /etc/yum.repos.d/* /tmp/repos
+    - name: local repo
+      copy:
+        src: local.repo
+        dest: /etc/yum.repos.d/local.repo
+        force: yes
+    - name: Install package again
       yum:
         name: "{{ item }}"
         state: present
+        conf_file: local.repo
       with_items:
-        - /vagrant/yml/httpd/docker-ce-17.06.0.ce-1.el7.centos.x86_64.rpm
-        - /vagrant/yml/httpd/python2-pip-8.1.2-5.el7.noarch.rpm
-        - /vagrant/yml/httpd/python-devel-2.7.5-48.el7.x86_64.rpm
+        - docker-ce
+        - python-devel
+        - python-pip
     - name: Install Pip Packages
       pip:
         name: docker
