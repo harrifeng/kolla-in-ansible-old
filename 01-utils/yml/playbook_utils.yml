@@ -20,7 +20,6 @@
         name: "{{ item }}"
         state: present
         conf_file: local.repo
-        skip_broken: yes
       with_items:
         - docker-ce
         - python-devel
