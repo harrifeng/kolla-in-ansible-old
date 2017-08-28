@@ -5,6 +5,9 @@ sudo yum install -y creatrepo yum-utils device-mapper-persistent-data lvm2
 #    --add-repo \
 #    https://download.docker.com/linux/centos/docker-ce.repo
 
-yumdownloader --resolve --destdir=./localrpm ca-certificates docker-ce gcc libffi-devel openssl python-backports python-backports-ssl_match_hostname python-devel python-pip  python-setuptools libselinux-python ntp device-mapper-persistent-data lvm2 policycoreutils container-selinux libseccomp libtool-ltdl
+yumdownloader --resolve --destdir=./localrpm ca-certificates docker-ce gcc libffi-devel openssl python-backports \
+              python-backports-ssl_match_hostname python-devel python-pip  python-setuptools libselinux-python ntp \
+              device-mapper-persistent-data lvm2 policycoreutils container-selinux libseccomp libtool-ltdl policycoreutils-devel  \
+              policycoreutils-python libsemanage-python libsemanage
 
 createrepo ./localrpm
